@@ -8,21 +8,41 @@ namespace CTCISol
         {
             //Console.WriteLine("Hello World!");
 
-            Console.WriteLine(IsPrime(11));
+            Node node1 = new Node();
+            node1.value = 1;
+            Node node2 = new Node();
+            node2.value = 2;
+            Node node3 = new Node();
+            node3.value = 3;
+            Node node4 = new Node();
+            node4.value = 4;
+            Node node5 = new Node();
+            node5.value = 5;
+
+            node1.left = node2;
+            node1.right = node3;
+            node2.left = node4;
+            node2.right = node5;
+            
+            Console.WriteLine(SumOfBinaryTree(node1));
         }
 
-        static bool IsPrime(int n)
+        static int SumOfBinaryTree(Node node)
         {
-            //for (int i = 2; i * i <= n; i++)
-            for (int i = 2; i <= Math.Sqrt(n); i++)
+            // Breaking Condition
+            if (node == null)
             {
-                if (n % i == 0)
-                {
-                    return false;
-                }
+                return 0;
             }
 
-            return true;
-        }        
+            return SumOfBinaryTree(node.left) + node.value + SumOfBinaryTree(node.right);
+        }
+    }
+
+    class Node
+    {
+        public int value;
+        public Node left;
+        public Node right;
     }
 }
