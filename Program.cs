@@ -8,24 +8,21 @@ namespace CTCISol
         {
             //Console.WriteLine("Hello World!");
 
-            Console.WriteLine(Factorial(-5));
+            Console.WriteLine(IsPrime(11));
         }
 
-        static int Factorial(int n)
+        static bool IsPrime(int n)
         {
-            // Breaking Condition
-            if (n < 0)
+            //for (int i = 2; i * i <= n; i++)
+            for (int i = 2; i <= Math.Sqrt(n); i++)
             {
-                return -1;
+                if (n % i == 0)
+                {
+                    return false;
+                }
             }
-            else if (n == 0)
-            {
-                return 1;
-            }
-            else
-            {
-                return n * Factorial(n - 1);
-            }
-        }
+
+            return true;
+        }        
     }
 }
